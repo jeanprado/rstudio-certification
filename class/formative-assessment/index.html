@@ -169,22 +169,22 @@ session$onSessionEnded(function() {
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "question_1", question = structure("<ol>\n<li>Your dataset has a string column with dates like <code>&quot;16 de dezembro de 2022&quot;<\u002fcode> and you want to parse it to Date with the <code>lubridate<\u002fcode> package. Which steps you need to take?<\u002fli>\n<\u002fol>\n", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_e046aca", 
+"character")), answers = list(structure(list(id = "lnr_ans_deba69f", 
     option = "extract components, use lubridate functions", value = "extract components, use lubridate functions", 
     label = structure("extract components, use lubridate functions", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = structure("no, extract components is another", html = TRUE, class = c("html", 
     "character")), type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_2278794", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_2d20f9a", 
     option = "use lubridate, then correct order", value = "use lubridate, then correct order", 
     label = structure("use lubridate, then correct order", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = structure("no, you can get a result, but you won’t know if it’s correct once you didn’t identify the correct date elements order", html = TRUE, class = c("html", 
     "character")), type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_28d33f7", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_d7c7a23", 
     option = "use as.date, then parse with lubridate", value = "use as.date, then parse with lubridate", 
     label = structure("use as.date, then parse with lubridate", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = structure("no, lubridate replaces as.Date base R functions for converting strings to Date elements", html = TRUE, class = c("html", 
     "character")), type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_fafa8e1", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_b2157e9", 
     option = "identify order, use lubridate", value = "identify order, use lubridate", 
     label = structure("identify order, use lubridate", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
@@ -195,7 +195,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "question_1-answer", question = "question_1"), loading = NULL, 
-    random_answer_order = FALSE, allow_retry = TRUE, seed = 555453304.741347, 
+    random_answer_order = FALSE, allow_retry = TRUE, seed = 384715484.820853, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
@@ -203,21 +203,21 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "question_2", question = structure("<ol start=\"2\">\n<li>You have a date string that’s “2011-08-12”, what’s the lubridate function to parse it and expected format?<\u002fli>\n<\u002fol>\n", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_33ae09b", 
+"character")), answers = list(structure(list(id = "lnr_ans_2a26f70", 
     option = "lubridate::ymd -> \"2011-08-12\"", value = "lubridate::ymd -> \"2011-08-12\"", 
     label = structure("lubridate::ymd -&gt; “2011-08-12”", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_67931bc", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_b9cb5d3", 
     option = "lubridate::ydm -> \"2011-12-08\"", value = "lubridate::ydm -> \"2011-12-08\"", 
     label = structure("lubridate::ydm -&gt; “2011-12-08”", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = structure("no, you can get a result, but you won’t know if it’s correct once you didn’t identify the correct date elements order", html = TRUE, class = c("html", 
     "character")), type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_c50fe11", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_cd2d35b", 
     option = "as.Date -> \"2011-08-12\"", value = "as.Date -> \"2011-08-12\"", 
     label = structure("as.Date -&gt; “2011-08-12”", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = structure("correct output, but function not from lubridate", html = TRUE, class = c("html", 
     "character")), type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_b11634c", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_9e1fa64", 
     option = "lubridate::ymd_hms", value = "lubridate::ymd_hms", 
     label = structure("lubridate::ymd_hms", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = structure("no hms info, so it’s going to fail", html = TRUE, class = c("html", 
@@ -229,25 +229,25 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "question_2-answer", question = "question_2"), loading = NULL, 
-    random_answer_order = FALSE, allow_retry = TRUE, seed = 137619452.935916, 
+    random_answer_order = FALSE, allow_retry = TRUE, seed = 1369944240.86207, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>
  
 <script type="application/shiny-prerendered" data-context="server">
 learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label = "question_3", question = structure("<ol start=\"3\">\n<li>Have a date and time element and want to extract day of month<\u002fli>\n<\u002fol>\n", html = TRUE, class = c("html", 
-"character")), answers = list(structure(list(id = "lnr_ans_1c34b28", 
+"character")), answers = list(structure(list(id = "lnr_ans_1d0d769", 
     option = "as.Date", value = "as.Date", label = structure("as.Date", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = structure("already a date, doesn’t need to convert", html = TRUE, class = c("html", 
     "character")), type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_cb7e210", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_b5f0dc6", 
     option = "lubridate::day", value = "lubridate::day", label = structure("lubridate::day", html = TRUE, class = c("html", 
     "character")), correct = TRUE, message = NULL, type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_3de03d6", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_7ec92fb", 
     option = "lubridate::wday", value = "lubridate::wday", label = structure("lubridate::wday", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = structure("no, weekday", html = TRUE, class = c("html", 
     "character")), type = "literal"), class = c("tutorial_question_answer", 
-"tutorial_quiz_answer")), structure(list(id = "lnr_ans_387f135", 
+"tutorial_quiz_answer")), structure(list(id = "lnr_ans_1601fc8", 
     option = "lubridate::date", value = "lubridate::date", label = structure("lubridate::date", html = TRUE, class = c("html", 
     "character")), correct = FALSE, message = structure("no, whole date", html = TRUE, class = c("html", 
     "character")), type = "literal"), class = c("tutorial_question_answer", 
@@ -258,7 +258,7 @@ learnr:::question_prerendered_chunk(structure(list(type = "learnr_radio", label 
 "character")), incorrect = structure("Incorrect", html = TRUE, class = c("html", 
 "character")), message = NULL, post_message = NULL), ids = list(
     answer = "question_3-answer", question = "question_3"), loading = NULL, 
-    random_answer_order = FALSE, allow_retry = TRUE, seed = 1613304283.24875, 
+    random_answer_order = FALSE, allow_retry = TRUE, seed = 249735546.883708, 
     options = list()), class = c("learnr_radio", "tutorial_question"
 )), session = session)
 </script>

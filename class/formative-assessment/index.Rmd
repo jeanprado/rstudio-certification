@@ -2,9 +2,6 @@
 title: "Formative Assessment"
 output: learnr::tutorial
 runtime: shiny_prerendered
-editor_options: 
-  markdown: 
-    wrap: 72
 ---
 
 ```{r setup, include=FALSE}
