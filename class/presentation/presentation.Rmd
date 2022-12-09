@@ -8,7 +8,7 @@ output:
   xaringan::moon_reader:
     css: ["xaringan-themer.css", "custom.css"]
     nature:
-      slideNumberFormat: "%current% / %total%"
+      slideNumberFormat: "%current%"
       highlightStyle: github
       highlightLines: true
       ratio: 4:3
@@ -192,7 +192,7 @@ if expected format, no problem
 
 ???
 
-4 digits, 2 digits, 2 digits
+Y 4 digits, M 2 digits, D 2 digits
 
 ---
 
@@ -212,44 +212,6 @@ Not sure if is what we expected... (should be `"2022-12-16"`)
 
 - misunderstood because not in default format
 - same date as we got first place
-
----
-
-## How base R handles each of them
-
-```{r error=TRUE}
-(date <- as.Date("Dec 16, 2022"))
-```
-
-<br>
-
-not there yet...
-
----
-
-## How base R handles each of them
-
-```{r error=TRUE}
-(date <- as.Date("16 de dezembro de 2022"))
-```
-
-same... 😰
-
---
-
-### Possible solution...
-
-```{r}
-(date <- as.Date("16 de dezembro de 2022",
-                 format = "%d de %B de %Y"))
-```
-
-???
-
-- specify format
-- fix for this case, but not standard
-- have to know the format in this weird way w/ `%`
-- i always forget this
 
 ---
 class: middle, center
