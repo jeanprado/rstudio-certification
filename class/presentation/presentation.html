@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Basic date parsing with lubridate package</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="jean prado for RStudio Education" />
+    <script src="presentation_files/header-attrs/header-attrs.js"></script>
+    <link href="presentation_files/panelset/panelset.css" rel="stylesheet" />
+    <script src="presentation_files/panelset/panelset.js"></script>
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+    <link rel="stylesheet" href="custom.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Basic date parsing with <code>lubridate</code> package
+]
+.subtitle[
+## How you can you parse dates in R without a hassle
+]
+.author[
+### jean prado for RStudio Education
+]
+.date[
+### Dec 16, 2022
+]
+
+---
+
+
+
+
+
+
+## Welcome!
+
+### About me
+
+**Jean Prado** (they/them)
+
+Engagement Strategist, Facilitator, Tech 4 Good advocate, R programmer.
+
+???
+
+Teaching this class
+
+---
+
+## Welcome!
+
+### Should I be here?
+
+???
+
+- as you are watching
+- if this class is for you (very likely)
+
+--
+
+- Really basic R knowledge
+
+--
+
+- Save time for tidying and transforming data
+
+???
+
+- most of a data analyst time is spent tidying data to be analyzed
+
+--
+
+- Analyze datasets that record an event in time
+
+???
+
+- very important variable for identifying underlying patterns
+
+--
+
+  - date
+  
+--
+
+  - time
+  
+--
+
+  - date and time
+
+???
+
+- sometimes the three in different formats each!
+
+---
+class: middle, center
+
+## The problem with dates
+
+---
+
+## The problem with dates
+
+Usually don't go by a specific format
+
+- `2022-12-16`
+
+???
+
+- today's date
+- programming-friendly way
+
+--
+
+- `12/16/2022`
+
+???
+
+- usually US locale
+
+--
+
+- `16/12/2022`
+
+???
+
+- most of the world
+
+--
+
+- `Dec 16, 2022`
+
+???
+
+- formal written way
+
+--
+
+- `16 de dezembro de 2022`
+
+???
+
+- locales: Brazil &lt;3
+
+---
+class: middle, center
+
+## How base R handles each of them
+
+---
+
+## How base R handles each of them
+
+Using base function `as.Date()` which transforms string to Date class:
+
+
+```r
+(date &lt;- as.Date("2022-12-16"))
+```
+
+```
+## [1] "2022-12-16"
+```
+
+--
+
+```r
+class(date)
+```
+
+```
+## [1] "Date"
+```
+
+???
+
+if expected format, no problem
+
+---
+
+## How base R handles each of them
+
+
+```r
+(date &lt;- as.Date("12/16/2022"))
+```
+
+```
+## Error in charToDate(x): string de caracteres não é um formato padrão não ambíguo
+```
+
+???
+
+- if don't fit
+- why error?
+
+--
+
+&lt;br&gt;
+
+**The problem:** not specific on default `YYYY-MM-DD`.
+
+???
+
+4 digits, 2 digits, 2 digits
+
+---
+
+## How base R handles each of them
+
+
+```r
+(date &lt;- as.Date("16/12/2022"))
+```
+
+```
+## [1] "0016-12-20"
+```
+
+--
+
+&lt;br&gt;
+
+Not sure if is what we expected... (should be `"2022-12-16"`)
+
+???
+
+- misunderstood because not in default format
+- same date as we got first place
+
+---
+
+## How base R handles each of them
+
+
+```r
+(date &lt;- as.Date("Dec 16, 2022"))
+```
+
+```
+## Error in charToDate(x): string de caracteres não é um formato padrão não ambíguo
+```
+
+&lt;br&gt;
+
+not there yet...
+
+---
+
+## How base R handles each of them
+
+
+```r
+(date &lt;- as.Date("16 de dezembro de 2022"))
+```
+
+```
+## Error in charToDate(x): string de caracteres não é um formato padrão não ambíguo
+```
+
+same... 😰
+
+--
+
+### Possible solution...
+
+
+```r
+(date &lt;- as.Date("16 de dezembro de 2022",
+                 format = "%d de %B de %Y"))
+```
+
+```
+## [1] "2022-12-16"
+```
+
+???
+
+- specify format
+- fix for this case, but not standard
+- have to know the format in this weird way w/ `%`
+- i always forget this
+
+---
+class: middle, center
+
+## Advantage of `lubridate`
+
+---
+
+## Advantage of `lubridate`
+
+- More explicit on what you're parsing
+
+???
+
+- very clear the input and output
+
+--
+
+- Doesn't need knowledge of `%m`, `%d`, `%y`, `%B`, `%p`, etc.
+
+???
+
+- weird conversion characters
+
+--
+
+- More freedom on date and time formats
+
+???
+
+- can parse most specific cases
+
+--
+
+- Easily extract date and time components
+
+???
+
+- functions to get separate time components (day, month)
+
+--
+
+- Better timezone handling
+
+--
+
+- Calculate time spans and duration
+
+???
+
+- not detail in this class
+
+---
+class: middle, center
+
+## Using `lubridate`
+
+???
+
+get going with `lubridate`
+
+---
+
+## Using `lubridate`
+
+### Date-time parsing
+
+1. Identify order of the date/time elements
+
+--
+
+2. Use `lubridate` set of functions to parse it
+
+--
+
+### Example
+
+1. **16 de dezembro de 2022** -&gt; `date, month, year`
+
+--
+
+2. Use `lubridate::dmy()`
+
+???
+
+d, m, y: day, month, year
+
+--
+
+
+```r
+lubridate::dmy("16 de dezembro de 2022")
+```
+
+```
+## [1] "2022-12-16"
+```
+
+simple as that 😉
+
+???
+
+also considers system default locale
+
+---
+
+## Date-time parsing
+
+Set of functions (referenced from [lubridate cheat sheet](https://rawgit.com/rstudio/cheatsheets/main/lubridate.pdf))
+
+&lt;img src="../img/date-time-parsing.png" width="60%" style="display: block; margin: auto;" /&gt;
+
+???
+
+- year, month, day, hour, minute, second
+- specific: month-year and quarter
+
+---
+class: middle, center
+
+## Date and time components
+
+---
+
+## Date and time components
+
+
+```r
+(date &lt;- lubridate::dmy_hms("16 de dezembro de 2022 às 15:45:02"))
+```
+
+```
+## [1] "2022-12-16 15:45:02 UTC"
+```
+
+???
+
+when you have a date/time element
+
+--
+
+### You can get components separately:
+
+.panelset[
+
+
+.panel[.panel-name[day]
+
+
+```r
+lubridate::day(date)
+```
+
+```
+## [1] 16
+```
+
+]
+
+
+.panel[.panel-name[month]
+
+
+```r
+lubridate::month(date)
+```
+
+```
+## [1] 12
+```
+
+]
+
+.panel[.panel-name[year]
+
+
+```r
+lubridate::year(date)
+```
+
+```
+## [1] 2022
+```
+
+]
+
+.panel[.panel-name[hour]
+
+
+```r
+lubridate::hour(date)
+```
+
+```
+## [1] 15
+```
+
+]
+
+.panel[.panel-name[minute]
+
+
+```r
+lubridate::minute(date)
+```
+
+```
+## [1] 45
+```
+
+]
+
+.panel[.panel-name[second]
+
+
+```r
+lubridate::second(date)
+```
+
+```
+## [1] 2
+```
+
+]
+
+]
+
+(always in `numeric` format)
+
+???
+
+easy to work around
+
+tip: read the function and output
+
+---
+
+## Date and time components
+
+Other cool stuff:
+
+--
+
+### Weekday
+
+
+```r
+lubridate::wday(date)
+```
+
+```
+## [1] 6
+```
+
+--
+
+
+```r
+lubridate::wday(date, label = TRUE)
+```
+
+```
+## [1] Sex
+## Levels: Dom &lt; Seg &lt; Ter &lt; Qua &lt; Qui &lt; Sex &lt; Sáb
+```
+
+???
+
+- label (friday)
+- factor, order correctly
+
+---
+
+## Date and time components
+
+Other cool stuff:
+
+--
+
+### Week of the year
+
+
+```r
+lubridate::week(date)
+```
+
+```
+## [1] 50
+```
+
+???
+
+close end of the year
+
+--
+
+### Quarter
+
+
+```r
+lubridate::quarter(date)
+```
+
+```
+## [1] 4
+```
+
+---
+
+## Date and time components
+
+Set of functions (referenced from [lubridate cheat sheet](https://rawgit.com/rstudio/cheatsheets/main/lubridate.pdf))
+
+&lt;img src="../img/date-components.png" width="100%" style="display: block; margin: auto;" /&gt;
+
+---
+
+## Let's try it!
+
+time to live code 🥸
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"slideNumberFormat": "%current% / %total%",
+"highlightStyle": "github",
+"highlightLines": true,
+"ratio": "4:3",
+"countIncrementalSlides": true
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>

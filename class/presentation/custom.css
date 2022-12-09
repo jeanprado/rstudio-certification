@@ -1,0 +1,7 @@
+h1 code.remark-inline-code {
+  color: var(--title-slide-text-color);
+}
+
+.subtitle h2 {
+  font-size: 36px;
+}
