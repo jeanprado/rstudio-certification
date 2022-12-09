@@ -14,22 +14,13 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-
-### About me
-
-lalala
-
-### About the class
-
-lalala
-
 ## 1. Learner persona
 
 ### A) Carol
 
 #### General background
 
-She was born in Macapá, Brazil, and moved to São Paulo to work in a consulting firm as Inbound Specialist to create better marketing strategies. In her free time, she loves to go to walk in the sunny parks and go to clubs at night.
+She was born in Macapá, Brazil, and moved to São Paulo to work in a consulting firm as Inbound Specialist to create better marketing strategies. In her free time, she loves to walk in the sunny parks and go to clubs at night.
 
 #### Relevant experience
 
@@ -49,8 +40,8 @@ She has ADHD so she gets very excited processing new information but is difficul
 
 ## 3. Formative assessment
 
-lalala
+embed here
 
 ## 4. Materials
 
-notebook
+embed here
