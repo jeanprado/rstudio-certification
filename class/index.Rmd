@@ -40,8 +40,18 @@ She has ADHD so she gets very excited processing new information but is difficul
 
 ## 3. Formative assessment
 
-embed here
+```{r}
+xaringanExtra::embed_xaringan(
+  url = "https://jeanprado.shinyapps.io/formative-assessment/",
+  ratio = "4:3"
+)
+```
 
 ## 4. Materials
 
-embed here
+```{r}
+xaringanExtra::embed_xaringan(
+  url = "https://jeanprado.github.io/rstudio-certification/class/slides/",
+  ratio = "4:3"
+)
+```
