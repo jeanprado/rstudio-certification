@@ -13,57 +13,66 @@ knitr::opts_chunk$set(echo = FALSE)
 
 ```{r question_1}
 question(
-  "1) Your dataset has a string column with dates like `\"16 de dezembro de 2022\"` and you want to parse it to Date with the `lubridate` package. Which steps you need to take?",
+  "1) Your dataset has a string column with dates in this format `\"16 de dezembro de 2022\"` and you want to parse it to Date with the `lubridate` package. Which steps you need to follow to get the best result?",
     answer(
-      "extract components, use lubridate functions", 
+      "1. extract date and time components, then 2. use lubridate functions to parse it", 
       correct = FALSE,
-      message = "no, extract components is another"
+      message = "You can only extract date and time components in a correctly parsed Date element, so it can't be the first step."
       ),
     answer(
-      "use lubridate, then correct order", 
+      "1. use `lubridate` parsing functions, then 2. identify the date and time elements order", 
       correct = FALSE,
-      message = "no, you can get a result, but you won't know if it's correct once you didn't identify the correct date elements order"
+      message = "Tip: remember what you need to identify *before* using a `lubridate` functions. If you start with them, you can get a result, but you won't know if it's correct since you didn't think about the first step."
       ),
     answer(
-      "use as.date, then parse with lubridate", 
+      "1. use `as.Date()` function, then 2. parse it with lubridate", 
       correct = FALSE,
-      message = "no, lubridate replaces as.Date base R functions for converting strings to Date elements"
+      message = "No, `lubridate` replaces the base R functions for converting strings into Date elements, so `as.Date()` isn't necessary."
       ),
     answer(
-      "identify order, use lubridate",
+      "1. identify the order of date and time elements, then 2. use `lubridate` parsing functions",
       correct = TRUE
       ),
   allow_retry = TRUE,
-  correct = "that's correct, once ou identify the order (in that case, date, month and year) you can use the currect lubridate function for it."
+  correct = "Yes! Once ou identify the date and time elements order (in the example, 1. date, 2. month and 3. year) you can use the currect lubridate function for it `lubridate::dmy()`."
 )
 ```
 
 ## Question 2
 
+You have a tibble with email IDs and their respective sent dates separated by space:
+
+```{r tibble}
+tibble::tibble(
+  email_id = c(483, 657, 362),
+  sent_date = c("2011 08 17", "2011 08 12", "2011 08 22")
+)
+```
+
 ```{r question_2}
 question(
-  "2) You have a date string that's \"2011-08-12\", what's the lubridate function to parse it and expected format?",
+  "2) You've extracted the date from email ID `657` and have it as string: `\"2011 08 12\"`. What's the correct `lubridate` function to parse it and the expected output?",
     answer(
-      "lubridate::ymd -> \"2011-08-12\"", 
+      "`lubridate::ymd()` and the output `\"2011-08-12\"`", 
       correct = TRUE,
       ),
     answer(
-      "lubridate::ydm -> \"2011-12-08\"", 
+      "`lubridate::ydm()` and the output `\"2011-12-08\"`", 
       correct = FALSE,
-      message = "no, you can get a result, but you won't know if it's correct once you didn't identify the correct date elements order"
+      message = "In this string, you will get this output, but it's not the correct date elements order. Tip: look at the other tibble's entries to figure out what's the correct order."
       ),
     answer(
-      "as.Date -> \"2011-08-12\"", 
+      "`as.Date()` and the output `\"2011-08-12\"`", 
       correct = FALSE,
-      message = "correct output, but function not from lubridate"
+      message = "The output is correct, but `as.Date()` is not a function from `lubridate`."
       ),
     answer(
-      "lubridate::ymd_hms",
+      "`lubridate::ymd_hms` and the output `\"2011-08-12 00:00:00\"`",
       correct = FALSE,
-      "no hms info, so it's going to fail"
+      "You don't have any hour, minute or second info in this string, so this function is going to fail."
       ),
   allow_retry = TRUE,
-  correct = "that's correct, the order is YYYY MM DD"
+  correct = "That's correct! From the other email entries, you can assume that the order is `YYYY MM DD`, so you can parse it with `lubridate::ymd()` function."
 )
 ```
 
@@ -71,27 +80,27 @@ question(
 
 ```{r question_3}
 question(
-  "3) Have a date and time element and want to extract day of month",
+  "3) You have a date and time element like `\"2022-06-06 12:45:37\"` and want to extract the *day of the month*. Which `lubridate` function do you need?",
     answer(
-      "as.Date", 
+      "`as.Date()`", 
       correct = FALSE,
-      message = "already a date, doesn't need to convert"
+      message = "No, for two reasons: 1. `as.Date()` converts strings to dates, but since it's already a date and time element, you don't need to convert it, and 2. `as.Date()` is a base R function, not from `lubridate`."
       ),
     answer(
-      "lubridate::day", 
+      "`lubridate::day()`", 
       correct = TRUE,
       ),
     answer(
-      "lubridate::wday", 
+      "`lubridate::wday()`", 
       correct = FALSE,
-      message = "no, weekday"
+      message = "The `lubridate::wday()` function will get the **day of the week**, in this case `2` (Monday). You need the **day of the month**."
       ),
     answer(
-      "lubridate::date",
+      "`lubridate::date()`",
       correct = FALSE,
-      "no, whole date"
+      message = "The `lubridate::date()` function will convert it do a date element (from date and time), but you still need to get the **day of the month**."
       ),
   allow_retry = TRUE,
-  correct = "that's correct, the day function extracts day"
+  correct = "Yes! That's correct, the `lubridate::day()` function extracts the **day of the month**."
 )
 ```
