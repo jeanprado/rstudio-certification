@@ -39,7 +39,7 @@ She gets very excited processing new information but is difficult to remember th
 
 ![Concept map describing that this class is going to teach how to use lubridate for better parsing of date and time from strings in R.](img/concept_map.jpg)
 
-<p style="text-align:right;">[Open in another tab](https://jeanprado.github.io/rstudio-certification/class/img/concept_map.jpg)</p>
+<p style="text-align:right;">[Open in another tab](https://jeanprado.github.io/rstudio-certification/class/img/concept_map.jpg){target="_blank"}</p>
 
 ## 3. Formative assessment
 
@@ -51,7 +51,7 @@ xaringanExtra::embed_xaringan(
 )
 ```
 
-<p style="text-align:right;">[Open in another tab](https://jeanprado.shinyapps.io/formative-assessment/)</p>
+<p style="text-align:right;">[Open in another tab](https://jeanprado.shinyapps.io/formative-assessment/){target="_blank"}</p>
 
 ## 4. Materials
 
@@ -63,4 +63,4 @@ xaringanExtra::embed_xaringan(
 )
 ```
 
-<p style="text-align:right;">[Open in another tab](https://jeanprado.github.io/rstudio-certification/class/slides/)</p>
+<p style="text-align:right;">[Open in another tab](https://jeanprado.github.io/rstudio-certification/class/slides/){target="_blank"}</p>
