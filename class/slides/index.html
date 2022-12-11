@@ -4,9 +4,9 @@
     <title>Basic date parsing with lubridate package</title>
     <meta charset="utf-8" />
     <meta name="author" content="jean prado for RStudio Education" />
-    <script src="presentation_files/header-attrs/header-attrs.js"></script>
-    <link href="presentation_files/panelset/panelset.css" rel="stylesheet" />
-    <script src="presentation_files/panelset/panelset.js"></script>
+    <script src="index_files/header-attrs/header-attrs.js"></script>
+    <link href="index_files/panelset/panelset.css" rel="stylesheet" />
+    <script src="index_files/panelset/panelset.js"></script>
     <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
     <link rel="stylesheet" href="custom.css" type="text/css" />
   </head>
@@ -14,10 +14,18 @@
     <textarea id="source">
 class: center, middle, inverse, title-slide
 
+.title[
 # Basic date parsing with <code>lubridate</code> package
+]
+.subtitle[
 ## How you can you parse dates in R without a hassle
+]
+.author[
 ### jean prado for RStudio Education
+]
+.date[
 ### Dec 16, 2022
+]
 
 ---
 
@@ -25,20 +33,6 @@ class: center, middle, inverse, title-slide
 
 
 
-
-## Welcome!
-
-### About me
-
-**Jean Prado** (they/them)
-
-Engagement Strategist, Facilitator, Tech 4 Good advocate, R programmer.
-
-???
-
-Teaching this class
-
----
 
 ## Welcome!
 
@@ -94,7 +88,13 @@ class: middle, center
 
 ## The problem with dates
 
-Usually don't go by a specific format
+Can be written in many different formats
+
+???
+
+- problem in programming. examples
+
+--
 
 - `2022-12-16`
 
@@ -482,8 +482,8 @@ lubridate::wday(date, label = TRUE)
 ```
 
 ```
-## [1] sex
-## Levels: dom &lt; seg &lt; ter &lt; qua &lt; qui &lt; sex &lt; sáb
+## [1] Sex
+## Levels: Dom &lt; Seg &lt; Ter &lt; Qua &lt; Qui &lt; Sex &lt; Sáb
 ```
 
 ???
@@ -589,6 +589,19 @@ if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
     deleted = true;
   });
 })();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
 (function() {
   "use strict"
   // Replace <script> tags in slides area to make them executable

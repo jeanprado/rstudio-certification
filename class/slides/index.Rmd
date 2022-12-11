@@ -40,20 +40,6 @@ style_duo_accent(
 
 ## Welcome!
 
-### About me
-
-**Jean Prado** (they/them)
-
-Engagement Strategist, Facilitator, Tech 4 Good advocate, R programmer.
-
-???
-
-Teaching this class
-
----
-
-## Welcome!
-
 ### Should I be here?
 
 ???
@@ -106,7 +92,13 @@ class: middle, center
 
 ## The problem with dates
 
-Usually don't go by a specific format
+Can be written in many different formats
+
+???
+
+- problem in programming. examples
+
+--
 
 - `2022-12-16`
 
