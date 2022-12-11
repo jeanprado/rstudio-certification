@@ -12,12 +12,17 @@ output:
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
+# check font size and RStudio theme
 ```
 
-## Load `lubridate`
+## Install and load `lubridate`
 
 ```{r lubridate}
+# install lubridate
+
 # load lubridate
+
 ```
 
 ## The dataset
