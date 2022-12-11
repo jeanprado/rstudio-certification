@@ -1,0 +1,97 @@
+---
+title: "`lubridate`: time to live code!"
+author: "jean prado for RStudio Education"
+date: "Dec 16, 2022"
+output:
+  html_document:
+    theme: cosmo
+    toc: true
+    toc_float: true
+    css: "style.css"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Load `lubridate`
+
+```{r lubridate}
+# load lubridate
+```
+
+## The dataset
+
+```{r data}
+# load nycflights13
+```
+
+### Tables
+
+- **airlines**: *carrier* and *name* information for airlines
+- **airports**: airports' metadata with location and timezone information
+- **flights**: information for all flights that departed NYC in 2013
+- **planes**: metadata for all plane tailnumbers in the FAA aircraft registry
+- **weather**: hourly meterological data for LGA, JFK and EWR
+
+```{r tables}
+# weather
+
+# flights
+```
+
+## Parse date and time
+
+### Selecting relevant columns
+
+```{r parse_1}
+# without time_hour
+
+
+```
+
+### Creating day, month, year
+
+```{r parse_2}
+
+```
+
+### Using hour
+
+```{r parse_3}
+
+```
+
+### Check with column
+
+```{r parse_4}
+# with time_hour
+
+
+```
+
+### Using flights
+
+```{r parse_5}
+# full date
+
+
+# only hour
+
+```
+
+## Extract components
+
+### Basic components
+
+```{r extract_1}
+# flights, only date-time column
+
+```
+
+### Other cool stuff
+
+```{r extract_2}
+# wday, label, week, quarter
+
+```
