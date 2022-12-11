@@ -1,13 +1,14 @@
 ---
 title: "Basic date parsing with `lubridate` package"
 author: "jean prado for RStudio Education"
-date: "`r Sys.Date()`"
+date: "Dec 16, 2022"
 output:
   html_document:
     theme: cosmo
     toc: true
     toc_float: true
     css: "style.css"
+    self_contained: false
 ---
 
 ```{r setup, include=FALSE}
@@ -32,26 +33,34 @@ She is struggling to analyze a bunch of tables she received, including data from
 
 #### Special considerations
 
-She has ADHD so she gets very excited processing new information but is difficult to remember the details later. Also, she's using Zoom in her phone and following the class on RStudio Cloud in her laptop.
+She gets very excited processing new information but is difficult to remember the details later. Also, she's using Zoom in her phone and following the class on RStudio Cloud in her laptop.
 
 ## 2. Concept map
 
 ![Concept map describing that this class is going to teach how to use lubridate for better parsing of date and time from strings in R.](img/concept_map.jpg)
 
+<p style="text-align:right;">[Open in another tab](https://jeanprado.github.io/rstudio-certification/class/img/concept_map.jpg)</p>
+
 ## 3. Formative assessment
 
-```{r}
+```{r echo=FALSE}
 xaringanExtra::embed_xaringan(
   url = "https://jeanprado.shinyapps.io/formative-assessment/",
-  ratio = "4:3"
+  ratio = "5:4",
+  border = "none"
 )
 ```
+
+<p style="text-align:right;">[Open in another tab](https://jeanprado.shinyapps.io/formative-assessment/)</p>
 
 ## 4. Materials
 
-```{r}
+```{r echo=FALSE}
 xaringanExtra::embed_xaringan(
   url = "https://jeanprado.github.io/rstudio-certification/class/slides/",
-  ratio = "4:3"
+  ratio = "4:3",
+  border = "none"
 )
 ```
+
+<p style="text-align:right;">[Open in another tab](https://jeanprado.github.io/rstudio-certification/class/slides/)</p>
