@@ -335,6 +335,7 @@ class: middle, center
 
 when you have a date/time element
 
+!! REMEMBER TO CHANGE SLIDES OUTSIDE SPEAKER NOTES !!
 --
 
 ### You can get components separately:
@@ -430,32 +431,6 @@ lubridate::wday(date, label = TRUE)
 
 ## Date and time components
 
-Other cool stuff:
-
---
-
-### Week of the year
-
-```{r}
-lubridate::week(date)
-```
-
-???
-
-close end of the year
-
---
-
-### Quarter
-
-```{r}
-lubridate::quarter(date)
-```
-
----
-
-## Date and time components
-
 Set of functions (referenced from [lubridate cheat sheet](https://rawgit.com/rstudio/cheatsheets/main/lubridate.pdf))
 
 ```{r out.width="100%", fig.align='center', echo=FALSE}
@@ -467,3 +442,5 @@ knitr::include_graphics("../img/date-components.png")
 ## Let's try it!
 
 time to live code 🥸
+
+[download raw file](https://raw.githubusercontent.com/jeanprado/rstudio-certification/master/class/demo-code.R)
