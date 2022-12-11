@@ -230,14 +230,6 @@ class: middle, center
 
 --
 
-- More freedom on date and time formats
-
-???
-
-- can parse most specific cases
-
---
-
 - Easily extract date and time components
 
 ???
